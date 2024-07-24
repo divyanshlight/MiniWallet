@@ -1,0 +1,35 @@
+.balanceContainer {
+    border-radius: 12px;
+    padding: 4vw;
+    background-color: #222222;
+  }
+  
+  .balanceContainer span {
+    font-size: 3.5vw;
+  }
+  
+  .balanceHeader {
+    text-align: left;
+  }
+  
+  .balanceContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .balance p {
+    font-size: 7vw;
+  }
+  .transferButton {
+    padding: 0 7vw;
+    height: 60px;
+    border: none;
+    background-color: #2b73ff;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 100%;
+  }

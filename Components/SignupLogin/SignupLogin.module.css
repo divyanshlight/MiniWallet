@@ -1,0 +1,153 @@
+.mainPage {
+  height: 100vh;
+  background-color: #121212;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  padding: 1.5rem 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+    margin-bottom: 10%;
+
+}
+
+.iconContainer {
+  display: flex;
+  gap: 0.5rem;
+  color: #2b73ff;
+}
+
+.heading {
+  font-family: "Sarpanch", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  color: #fff;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding-top: 5rem; */
+  gap: 2rem;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.input {
+  padding: 10px 40px 10px 40px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  width: 90vw;
+  height: 3.5rem;
+  background-color: #232323;
+  color: #ffffff;
+}
+
+.formContainer {
+  padding: 0 1rem;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}
+
+.forgotPassword {
+  position: absolute;
+  right: 12px;
+  bottom: -1.5rem;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.forgotPassword a {
+  text-decoration: none;
+  color: #2b73ff;
+}
+
+.button {
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.063rem;
+  padding: 14px 10px;
+  width: 87vw;
+  background-color: #2b73ff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.75rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  margin-top: 1rem;
+}
+
+.dividerLine {
+  flex: 1;
+  border: 0;
+  border-top: 1px solid #6c757d;
+}
+
+.dividerText {
+  margin: 0 1rem;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.signInWith {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.socialIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 30px;
+  background-color: #262626;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signupLink {
+  display: flex;
+  gap: 0.3rem;
+}
+.signupLink span {
+  color: #2b73ff;
+}
+.signupLink p {
+  color: #555555;
+}

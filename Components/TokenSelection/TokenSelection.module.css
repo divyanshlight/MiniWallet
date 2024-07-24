@@ -1,0 +1,27 @@
+.tokenItem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .symbol {
+    flex: 1;
+    font-size: 16px;
+  }
+  
+  .tokenItem:hover {
+    background-color: #2b2b2b;
+  }
+  

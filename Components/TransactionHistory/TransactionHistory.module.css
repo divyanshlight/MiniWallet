@@ -1,0 +1,102 @@
+.transactionHistory {
+    margin: 20px;
+    margin-top: -0.1rem;
+    background-color: #121212;
+    height: 100vh;
+  }
+  
+  .title {
+    font-family: "Sarpanch", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    color: #555555;
+  }
+  
+  .header, .backButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .transactionHistory h2 {
+    text-align: center;
+  }
+  
+  .transactionItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .transactionDetails {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 0.5rem;
+  }
+  
+  .transactionDate {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #aaa;
+    margin: 20px 0 10px;
+  }
+  
+  .transactionMethod {
+    font-size: 16px;
+  }
+  
+  .transactionAddress {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .transactionIcon {
+    font-size: 24px;
+    margin: 0.7rem;
+  }
+  
+  .transactionValue {
+    font-size: 16px;
+    text-align: right;
+  }
+  
+  .transactionTypeIcon {
+    display: flex;
+    align-items: center;
+    background-color: #232323;
+    justify-content: center;
+    border-radius: 20rem;
+  }
+  
+  .tabsContainer {
+    padding-top: 3vh;
+  }
+  
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .tab {
+    padding: 6px 7px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #232323;
+  }
+  
+  .tab.active {
+    background-color: #2B73FF;
+
+  }
+  
+  .tabs p {
+    white-space: nowrap;
+  }
+  

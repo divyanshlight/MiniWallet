@@ -1,0 +1,31 @@
+
+.imageContainer {
+    position: relative;
+    text-align: center;
+    margin-top: 0.8rem;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+  }
+  
+  .stackText,  .claimText {
+    font-size: 6vw;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 2vh;
+  }
+  
+  .stackButton {
+    padding: 1.5vh 7vw;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 3.5vw;
+    border-radius: 20px;
+  }

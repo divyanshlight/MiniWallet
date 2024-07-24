@@ -1,0 +1,147 @@
+.container {
+  padding: 0 1.5rem;
+}
+.walletInfo {
+  color: #ffffff;
+  font-family: "boboto", sans-serif;
+  gap: 2vh;
+  border-radius: 20px;
+
+  box-sizing: border-box;
+}
+.heading {
+  font-family: "Sarpanch", sans-serif;
+  color: #fff;
+}
+.backButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.1rem;
+  color: white;
+}
+.seedPhraseText {
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+.copiedText {
+  font-size: 1.2vh;
+  color: #2b73ff;
+  margin-top: 1vh;
+}
+.blurred {
+  filter: blur(5px);
+}
+.walletInfo h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding-top: 4vh;
+  padding-bottom: 1vh;
+}
+.profileContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.address h3,
+.seedPhrase h3 {
+  font-weight: 500;
+}
+
+.addressContainer,
+.seedPhraseContainer {
+  width: 100%;
+  background-color: #232323;
+  border-radius: 0.625rem;
+  padding: 0.7rem 1rem;
+  margin-top: 1.5rem;
+  box-sizing: border-box;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.addressContainer label,
+.seedPhraseContainer label {
+  font-size: 1.6vh;
+}
+
+.addressContainer p,
+.seedPhraseContainer p {
+  line-height: 1.6rem;
+  font-size: 0.8rem;
+}
+
+.seedPhraseContainer p,
+.seedPhraseText {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.8vh;
+}
+
+.labelWithIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.labelWithIcon p {
+  color: #555555;
+  font-weight: 600;
+}
+.copyIcon {
+  cursor: pointer;
+  font-size: 1.8vh;
+  color: #2b73ff;
+  transition: color 0.3s ease;
+}
+
+.copiedText {
+  font-size: 1.2vh;
+  color: #2b73ff;
+  margin-top: 1vh;
+}
+
+.seedPhraseText {
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.blurred {
+  filter: blur(5px);
+}
+
+.outerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  box-sizing: border-box;
+  padding: 7vh 4.5vw;
+}
+
+.button {
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.063rem;
+  padding: 14px 10px;
+  width: 87vw;
+  background-color: rgba(255, 95, 95, 0.6);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+.toolTipContainer {
+  background-color: #1f4388;
+  color: white;
+  padding: 0.5rem 1rem;
+  display: flex;
+  border-radius: 10px;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+  justify-content: center;
+}

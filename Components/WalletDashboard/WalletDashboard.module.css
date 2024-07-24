@@ -1,0 +1,192 @@
+.dashboard {
+  width: 100vw;
+  padding-top: 1rem;
+  background-color: #121212;
+  height: calc(100vh - 4.125rem);
+  overflow: scroll;
+}
+
+.container {
+  padding: 0 1.1rem;
+  font-family: "roboto", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.heading {
+  font-family: "Sarpanch", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  color: #555555;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+}
+.dashboardContainer {
+  padding-top: 0.25rem;
+}
+.tab {
+  padding: 1.5vw 6vw;
+  cursor: pointer;
+  border: 1px solid #2b73ff;
+  border-radius: 17px 0 0 17px;
+  margin-bottom: 1.5vh;
+  margin-top: 1.5vh;
+  background-color: #1f4388;
+  color: #fff;
+}
+
+.tab + .tab {
+  border-radius: 0 17px 17px 0;
+}
+
+.noWallet {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.switchableTabs {
+  display: flex;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.switchableTab {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+}
+
+.activeIndicator {
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.hotContainer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.tokenInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+.token_left_detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.token_icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  background: #627eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tokenSymbol {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.125rem;
+}
+
+.amount_sec {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.running_value {
+  margin-right: 0.5rem;
+}
+
+.tokenValue {
+  font-size: 0.75rem;
+}
+
+.claimInfo {
+  font-size: 0.875rem;
+  border-bottom: solid #2b73ff 0.125rem;
+  padding-bottom: 0.25rem;
+}
+
+.hotInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.privateKeyContainer {
+  position: relative;
+}
+
+.privateKeyContainer .copyIcon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.btns_grp {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.buttonDiv {
+  background-color: #232323;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  border-radius: 10px;
+  color: #2B73FF;
+}
+.token_icon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  background: #627eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.token_marker {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #DFFE00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker_text {
+  font-size: 0.5rem;
+  color: #232323;
+}

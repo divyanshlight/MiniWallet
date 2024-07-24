@@ -1,0 +1,202 @@
+.swapContainer {
+  padding: 0 1.5rem;
+  background-color: #121212;
+  padding-top: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 4.125rem);
+  font-family: "Roboto", "sans-serif";
+  color: #ffffff;
+  overflow: scroll;
+  }
+  
+  .title {
+    font-family: "Sarpanch", sans-serif !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    color: #555555;
+  }
+  
+  .versionTab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .tab {
+    font-size: 1rem;
+    border-bottom: solid #2B73FF 0.125rem;
+    padding-bottom: 0.25rem;
+  
+  }
+  
+  .swapHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .swappingContainers {
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    position: relative;
+  }
+  
+  .swapBoxTop,
+  .swapBoxBottom {
+    margin-top: 1rem;
+    height: auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-color: #232323;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .halfCircleTop,
+  .halfCircleBottom {
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #121212;
+  }
+  
+  .halfCircleBottom {
+    bottom: auto;
+    top: -50% !important;
+  }
+  
+  .circle {
+    position: absolute;
+    margin-top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.625rem;
+    height: 2.625rem;
+    border-radius: 50%;
+    background-color: #232323;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: solid 0.188rem #121212;
+    z-index: 1;
+  }
+  
+  .button {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.063rem;
+    padding: 14px 10px;
+    width: 100%;
+    background-color: #2b73ff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin: 1rem 0;
+  }
+  .button:disabled{
+    background-color: #555555;
+  }
+  .coinSelectionTab {
+    display: flex;
+    margin-top: 1rem;
+    background-color: #121212;
+    width: 10rem;
+    height: 2.25rem;
+    border-radius: 10px;
+  }
+  
+  .tokenList {
+    margin-top: 2rem;
+    max-height: 200px;
+    overflow-y: auto !important;
+    background-color: #232323;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    align-items: center;
+  }
+  
+  .modalContent {
+    background-color: #232323;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .modalCloseButton {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.063rem;
+    padding: 14px 10px;
+    width: 100%;
+    background-color: #2b73ff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
+  }
+  
+  .amountInput {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: right;
+  }
+  .amountInput:focus {
+    outline: none;
+  }
+  .coinInputContainer{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .com_logo{
+    width: 1rem;
+    height: 1rem;
+  }
+  .network_label{
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .balance_value{
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .detailsContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #212121;
+    border-radius: 12px;
+    padding: 1rem 1rem;
+    margin: 1rem 0 0;
+    gap: 1rem;
+  }

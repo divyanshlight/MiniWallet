@@ -1,0 +1,95 @@
+.container {
+  padding: 0 1.5rem;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  height: calc(100vh - 4.125rem);
+
+  overflow: scroll;
+  padding-top: 1rem;
+  background: #121212;
+}
+
+.title {
+  font-family: "Sarpanch", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  color: #555555;
+}
+.titleContainer p {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+.stakingContainer {
+  background: #232323;
+  height: 85px;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+.stakingContainerInfo {
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+}
+.stakingContainerTitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 16.41px;
+  text-align: left;
+}
+.stakeButton{
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #2B73FF;
+  cursor: pointer;
+}
+.tokenList {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.tokenItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.tokenIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+.tokenInfo {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.tokenSymbol {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tokenApr {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.green {
+  color: #28a745;
+}
+
+.red {
+  color: #dc3545;
+}

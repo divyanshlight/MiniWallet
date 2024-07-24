@@ -1,0 +1,81 @@
+.loginContainer {
+    padding: 0 1.5rem;
+    padding-top: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "roboto", sans-serif;
+    width: 100%;
+  }
+
+  .heading{
+    font-family: "Sarpanch", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    color: #555555;
+    margin-bottom: 1rem;
+  }
+  .backButton {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .label {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .inputContainer {
+    border-radius: 0.625rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #232323;
+    width: 100%;
+    margin-top: 3rem;
+  }
+  
+  .inputContainer label {
+    font-size: 0.8rem;
+  }
+  
+  .textarea {
+    font-size: 1rem;
+    padding-top:0.25rem;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 10rem;
+    resize: none; 
+    color: #ffffff;
+    background-color: #232323;
+  }
+  
+  .button {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.063rem;
+    padding: 14px 10px;
+    width: 87vw;
+    background-color: #2b73ff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  
+  .error {
+    color: red;
+    margin-top: 1rem;
+  }
+  
+  
+  

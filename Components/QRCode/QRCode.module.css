@@ -1,0 +1,59 @@
+.qrcodeContainer {
+  width: 100vw;
+  padding-top: 1rem;
+  background-color: #121212;    
+  padding: 0rem 2rem;
+}
+.title {
+  font-family: "Sarpanch", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  color: #555555;
+}
+
+.header,
+.backButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.walletAddressContainer {
+  width: 100%;
+  background-color: #232323;
+  border-radius: 0.625rem;
+  padding: 0.7rem 1rem;
+  margin-top: 2.5rem;
+  box-sizing: border-box;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+.walletAddressContainer p,
+.seedPhraseText {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.8vh;
+}
+
+.labelWithIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.labelWithIcon p {
+  color: #555555;
+  font-weight: 600;
+}
+.copyIcon {
+  cursor: pointer;
+  font-size: 1.8vh;
+  color: #2b73ff;
+  transition: color 0.3s ease;
+}
+.copiedText {
+    font-size: 1.2vh;
+    color: #2b73ff;
+    margin-top: 1vh;
+  }

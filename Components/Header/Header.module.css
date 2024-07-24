@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.copyIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 24px;
+  color: #787878;
+}
+
+.copiedTooltip {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.eye_off {
+  color: #787878;
+}
+
+.mainportfolioContainer {
+  display: flex;
+  gap: 0.5rem;
+  color: #787878;
+}
+
+.portfolioDropDown {
+  display: flex;
+  justify-content: center;
+  gap: 0.1rem;
+}
