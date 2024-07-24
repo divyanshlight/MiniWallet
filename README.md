@@ -1,4 +1,4 @@
-# Dexpedia Crypto Wallet
+# Mini Crypto Wallet
 
 This is a Next.js project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -12,11 +12,11 @@ npm install -g yarn
 Step 1: Clone the Repository
 Clone the repository to your local machine:
 ```
-git clone https://github.com/divyanshStart/mini-app-crypto-wallet.git
+git clone [https://github.com/divyanshLight/MiniWallet.git]
 ```
 Navigate into the project directory:
 ```
-cd mini-app-crypto-wallet
+cd MiniWallet
 ```
 Step 2: Install Dependencies
 Install the project dependencies using Yarn:
