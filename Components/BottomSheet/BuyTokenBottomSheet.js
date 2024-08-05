@@ -20,12 +20,15 @@ function BuyTokenBottomSheet({
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         snapPoints={[500, 400, 100, 0]}
+        onOpenEnd={true}
+        animate={{ opacity: 1 }}
       >
         <Sheet.Container
           style={{
             backgroundColor: "#232323",
             color: "#fff",
           }}
+        
         >
           <Sheet.Header className={styles.sheet_header} />
           <div className={styles.modalContent}>

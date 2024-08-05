@@ -11,7 +11,7 @@ const Header = ({
   isBalanceVisible,
   toggleBalanceVisibility,
   handleShowUserProfile,
-  setShowPortfolio,
+  setShowQRCode,
 }) => {
   const [copied, setCopied] = useState(false);
   const { walletInfo } = useContext(WalletContext);
@@ -29,6 +29,17 @@ const Header = ({
       <div className={styles.header}>
         <div className={styles.balanceContent}>
           <div className={styles.mainportfolioContainer}>
+            {/* <div
+              onClick={() => {
+                setShowPortfolio(true);
+              }}
+              className={styles.portfolioDropDown}
+            >
+              <p>Main Portfolio</p> <FaSortDown />
+            </div> */}
+          </div>
+          <div className={styles.balance}>
+            <p>{isBalanceVisible ? `${balance} ` : "*********"}ETH</p>
             <div>
               {isBalanceVisible ? (
                 <IoEyeOutline
@@ -44,17 +55,6 @@ const Header = ({
                 />
               )}
             </div>
-            <div
-              onClick={() => {
-                setShowPortfolio(true);
-              }}
-              className={styles.portfolioDropDown}
-            >
-              <p>Main Portfolio</p> <FaSortDown />
-            </div>
-          </div>
-          <div className={styles.balance}>
-            <p>{isBalanceVisible ? `${balance} ETH` : "****"}</p>
           </div>
         </div>
         <div className={styles.iconsContainer}>
@@ -64,12 +64,17 @@ const Header = ({
             ) : (
               <BiSolidCopy
                 className={styles.icon}
-                onClick={() => handleCopy(walletInfo && walletInfo.address)}
+                onClick={() => handleCopy(walletInfo?.address)}
               />
             )}
             {copied && <span className={styles.copiedTooltip}>Copied</span>}
           </div>
-          <FaQrcode className={styles.icon}/>
+          <FaQrcode
+            className={styles.icon}
+            onClick={() => {
+              setShowQRCode(true);
+            }}
+          />
 
           <BiSolidBell className={styles.icon} />
           <FaGear className={styles.icon} onClick={handleShowUserProfile} />

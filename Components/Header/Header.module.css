@@ -39,7 +39,10 @@
 .eye_off {
   color: #787878;
 }
-
+.balance {
+  display: flex;
+  gap: 0.5rem;
+}
 .mainportfolioContainer {
   display: flex;
   gap: 0.5rem;

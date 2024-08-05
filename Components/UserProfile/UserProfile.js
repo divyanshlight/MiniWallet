@@ -13,6 +13,7 @@ import copy from "copy-to-clipboard";
 import SeedPhraseInfo from "./SeedPhraseInfo.js";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { BiCheck, BiSolidCopy } from "react-icons/bi";
 
 function UserProfile({ handleCloseUserProfile }) {
   const [walletInfo, setWalletInfo] = useState(null);
@@ -78,13 +79,14 @@ function UserProfile({ handleCloseUserProfile }) {
         {!showSeedPhraseInfo && !showAddressDetails && (
           <div className={styles.profileContainer}>
             <div className={styles.backButton} onClick={backToDashboard}>
-              <IoChevronBackOutline /><p>Back</p>
+              <IoChevronBackOutline />
+              <p>Back</p>
             </div>{" "}
             <div>
               <h2 className={styles.heading}>Credentials</h2>
             </div>{" "}
             <div className={styles.toolTipContainer}>
-            <IoIosInformationCircleOutline size={22} />
+              <IoIosInformationCircleOutline size={22} />
 
               <p>
                 Do not share your passphrase or private key with anyone, even
@@ -98,7 +100,14 @@ function UserProfile({ handleCloseUserProfile }) {
                   className={styles.copyIcon}
                   onClick={() => handleCopy(walletInfo && walletInfo.address)}
                 >
-                  <FaCopy />
+                  {copiedText === walletInfo?.address ? (
+                    <BiCheck className={styles.icon} />
+                  ) : (
+                    <BiSolidCopy
+                      className={styles.icon}
+                      onClick={() => handleCopy(walletInfo?.address)}
+                    />
+                  )}{" "}
                 </div>
               </div>
               <div className={styles.seedPhraseContent}>
@@ -106,9 +115,6 @@ function UserProfile({ handleCloseUserProfile }) {
                   {walletInfo && walletInfo.address}
                 </p>
               </div>
-              {copiedText === walletInfo?.address && (
-                <span className={styles.copiedText}>Copied!</span>
-              )}
             </div>
             <SeedPhraseInfo
               privateKey={walletInfo && walletInfo.privateKey}

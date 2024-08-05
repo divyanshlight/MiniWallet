@@ -9,10 +9,13 @@
   font-size: 1.5rem;
   font-weight: 700;
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
   color: #555555;
-}
 
+}
+.header {
+  gap: 4rem;
+}
 .header,
 .backButtonContainer {
   display: flex;

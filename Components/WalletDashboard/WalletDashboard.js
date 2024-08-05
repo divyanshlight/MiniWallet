@@ -15,10 +15,9 @@ import UserProfile from "../UserProfile/UserProfile";
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 import { FaWallet } from "react-icons/fa6";
 import { BiSolidMessageRoundedDots } from "react-icons/bi";
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import TransactionHistory from "../TransactionHistory/TransactionHistory";
 import PortfolioBottomSheet from "../BottomSheet/PortfolioBottomSheet";
-
+import QRCodePage from "../QRCode/QRCode";
 const WalletDashboard = () => {
   const router = useRouter();
   const {
@@ -40,6 +39,7 @@ const WalletDashboard = () => {
   const [transactionType, setTransactionType] = useState("buy");
   const [loading, setLoading] = useState(false);
   const [showTransferModal, setShowTransferModal] = useState(false);
+  const [showQRCOde, setShowQRCode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [onRampLink, setOnRampLink] = useState("");
   const [showOnRamp, setShowOnRamp] = useState(false);
@@ -61,7 +61,7 @@ const WalletDashboard = () => {
       getBalance(walletInfo.address, sdk);
       const interval = setInterval(() => {
         getBalance(walletInfo.address, sdk);
-      }, 1000); // Fetch every 60 seconds
+      }, 1000);
       return () => clearInterval(interval);
     }
   }, [walletInfo, sdk]);
@@ -71,7 +71,7 @@ const WalletDashboard = () => {
       setLoading(true);
       try {
         if (quote) {
-          setOnRampLink(quote.onRampLink);
+          setOnRampLink(quote?.onRampLink);
           setShowOnRamp(true);
           await getBalance(walletInfo.address, sdk);
         }
@@ -116,13 +116,17 @@ const WalletDashboard = () => {
   const handleCloseHistory = () => {
     setShowTransactionHistory(false);
   };
-
+  const handleCloseQRCode = () => {
+    setShowQRCode(false);
+  };
   return (
     <div className={styles.dashboard}>
       {showUserProfile ? (
         <UserProfile handleCloseUserProfile={handleCloseUserProfile} />
       ) : showTransactionHistory ? (
         <TransactionHistory handleCloseHistory={handleCloseHistory} />
+      ) : showQRCOde ? (
+        <QRCodePage handleCloseQRCode={handleCloseQRCode} />
       ) : (
         walletInfo && (
           <div className={styles.container}>
@@ -136,6 +140,7 @@ const WalletDashboard = () => {
                 isBalanceVisible={isBalanceVisible}
                 handleShowUserProfile={handleShowUserProfile}
                 setShowPortfolio={setShowPortfolio}
+                setShowQRCode={setShowQRCode}
               />
             )}
             <div className={styles.dashboardContainer}>
@@ -168,7 +173,6 @@ const WalletDashboard = () => {
                 <p className={styles.claimInfo}>Assets</p>
               </div>
               <div>
-                {/* tokens list map  */}
                 <div className={styles.hotInfo}>
                   {tokens.map((token, index) => (
                     <div key={index} className={styles.tokenInfo}>

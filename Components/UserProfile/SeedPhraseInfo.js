@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./UserProfile.module.css";
 import { FaStickyNote, FaCopy, FaArrowLeft } from "react-icons/fa";
 import copy from "copy-to-clipboard";
+import { BiCheck, BiSolidCopy } from "react-icons/bi";
 
 function SeedPhraseInfo({
   privateKey,
@@ -24,12 +25,18 @@ function SeedPhraseInfo({
 
   return (
     <div className={styles.walletInfo}>
-      {/* Seed Phrase Container */}
       <div className={styles.seedPhraseContainer}>
         <div className={styles.labelWithIcon}>
           <p>Seed Phrase</p>
-          <div className={styles.copyIcon} onClick={() => handleCopy(mnemonic)}>
-            <FaCopy />
+          <div className={styles.copyIcon}>
+            {copiedText === mnemonic ? (
+              <BiCheck className={styles.icon} />
+            ) : (
+              <BiSolidCopy
+                className={styles.icon}
+                onClick={() => handleCopy(mnemonic)}
+              />
+            )}{" "}
           </div>
         </div>
         <div className={styles.seedPhraseContent}>
@@ -41,21 +48,22 @@ function SeedPhraseInfo({
           >
             {mnemonic}
           </p>
-          {copiedText === mnemonic && (
-            <span className={styles.copiedText}>Copied!</span>
-          )}
         </div>
       </div>
-
-      {/* Private Key Container */}
       <div className={styles.seedPhraseContainer}>
         <div className={styles.labelWithIcon}>
           <p>Private Key</p>
           <div
             className={styles.copyIcon}
-            onClick={() => handleCopy(privateKey)}
           >
-            <FaCopy />
+            {copiedText === privateKey ? (
+              <BiCheck className={styles.icon} />
+            ) : (
+              <BiSolidCopy
+                className={styles.icon}
+                onClick={() => handleCopy(privateKey)}
+              />
+            )}{" "}
           </div>
         </div>
         <div className={styles.seedPhraseContent}>
@@ -67,9 +75,6 @@ function SeedPhraseInfo({
           >
             {privateKey}
           </p>
-          {copiedText === privateKey && (
-            <span className={styles.copiedText}>Copied!</span>
-          )}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./QRCode.module.css";
 import { IoChevronBackOutline } from "react-icons/io5";
-import { BiSolidCopy } from "react-icons/bi";
+import { BiCheck, BiSolidCopy } from "react-icons/bi";
 import copy from "copy-to-clipboard";
 import QRCode from "react-qr-code";
 
@@ -36,11 +36,15 @@ function QRCodePage({ handleCloseQRCode }) {
       <div className={styles.walletAddressContainer}>
         <div className={styles.labelWithIcon}>
           <p>Address</p>
-          <div
-            className={styles.copyIcon}
-            onClick={() => handleCopy(walletInfo && walletInfo.address)}
-          >
-            <BiSolidCopy />
+          <div className={styles.copyIcon}>
+            {copiedText === walletInfo?.address ? (
+              <BiCheck className={styles.icon} />
+            ) : (
+              <BiSolidCopy
+                className={styles.icon}
+                onClick={() => handleCopy(walletInfo?.address)}
+              />
+            )}{" "}
           </div>
         </div>
         <div className={styles.seedPhraseContent}>
@@ -48,9 +52,9 @@ function QRCodePage({ handleCloseQRCode }) {
             {walletInfo && walletInfo.address}
           </p>
         </div>
-        {copiedText === walletInfo?.address && (
+        {/* {copiedText === walletInfo?.address && (
           <span className={styles.copiedText}>Copied!</span>
-        )}
+        )} */}
       </div>
       <QRCode
         value={walletInfo?.address}

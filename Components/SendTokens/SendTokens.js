@@ -61,7 +61,6 @@ const SendTokens = ({
       });
 
       const gasPrice = await signer.getGasPrice();
-      console.log(estimatedGasLimit.toString(), gasPrice.toString());
       const tx = {
         to: transaction.to,
         data: await transaction.data(),
@@ -90,6 +89,7 @@ const SendTokens = ({
           isOpen={showTransferModal}
           onClose={() => setShowTransferModal(false)}
           snapPoints={[500, 400, 100, 0]}
+          onOpenEnd={true}
         >
           <Sheet.Container
             style={{
@@ -99,7 +99,6 @@ const SendTokens = ({
           >
             <Sheet.Header className={styles.sheet_header} />
             <div className={styles.modalContent}>
-              
               <h2 className={styles.heading}>Transfer Tokens</h2>
               <input
                 type="text"
