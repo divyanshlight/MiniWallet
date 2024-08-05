@@ -1,22 +1,19 @@
 import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
 import { ethers } from "ethers";
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { createThirdwebClient } from "thirdweb";
-import { TOKEN_ICONS } from "../Components/TokensList";
+import axios from "axios";
 import {
   THIRDWEB_CLIENT_ID,
   THIRDWEB_SECRET_KEY,
   TOKENS_PAIR_FOR_SWAP,
 } from "../Components/Constants";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { createThirdwebClient } from "thirdweb";
+import { TOKEN_ICONS } from "../Components/TokensList";
 const icons = require("base64-cryptocurrency-icons");
-import { useActiveAccount, useActiveWallet, useConnect } from "thirdweb/react";
-import { EmbeddedWalletSdk } from "@thirdweb-dev/wallets";
 
 export const WalletContext = createContext();
 
 export const WalletProvider = ({ children }) => {
-  const [account, setAccount] = useState();
   const [walletInfo, setWalletInfo] = useState(null);
   const [tokens, setTokens] = useState([]);
   const [tokenList, setTokenList] = useState([]);
@@ -33,30 +30,21 @@ export const WalletProvider = ({ children }) => {
     clientId: THIRDWEB_CLIENT_ID,
     secretKey: THIRDWEB_SECRET_KEY,
   });
-  const chains = {
-    id: 34443,
-    name: "Mode Network",
-    testnet: true,
-  };
-  const { connect } = useConnect({
-    client,
-    accountAbstraction: {
-      chain: chains,
-      sponsorGas: true,
-    },
-  });
 
   useEffect(() => {
-    const loadWallet = async () => {
-      try {
-        const thirdwebEmbeddedWallet = new EmbeddedWalletSdk({
-          clientId: THIRDWEB_CLIENT_ID,
-          chain: chains,
-        });
-
-        setSdk(thirdwebEmbeddedWallet);
-      } catch (error) {
-        console.log(error);
+    const loadWallet = () => {
+      const mnemonic = localStorage.getItem("walletMnemonic");
+      if (mnemonic) {
+        try {
+          const wallet = ethers.Wallet.fromMnemonic(mnemonic);
+          setWalletInfo({
+            address: wallet.address,
+            mnemonic: mnemonic,
+            privateKey: wallet.privateKey,
+          });
+        } catch (error) {
+          console.error("Failed to create wallet from mnemonic:", error);
+        }
       }
     };
 
@@ -67,32 +55,13 @@ export const WalletProvider = ({ children }) => {
       window.removeEventListener("storage", loadWallet);
     };
   }, []);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (provider && account) {
-          const signer = provider.getSigner(account.address);
-          setSigner(signer);
-        } else {
-          console.error("Provider or account not available.");
-        }
-      } catch (error) {
-        console.error("Error setting up signer:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const fetchTokens = async () => {
       try {
-        if (!account?.address) return;
-
         const response = await axios.get(
-          `https://explorer.mode.network/api/v2/addresses/${walletInfo.address}/tokens?type=ERC-20%2CERC-721%2CERC-1155`
+          `https://explorer.mode.network/api/v2/addresses/${walletInfo?.address}/tokens?type=ERC-20%2CERC-721%2CERC-1155`
         );
-
         const updatedTokens = response.data.items.map((item) => {
           const parsedValue = parseFloat(item?.value);
           const trimmedValue = parsedValue.toFixed(5);
@@ -118,14 +87,14 @@ export const WalletProvider = ({ children }) => {
       }
     };
 
-    fetchTokens();
+    if (walletInfo?.address) {
+      fetchTokens();
+    }
   }, [walletInfo?.address]);
 
   useEffect(() => {
     const fetchTokenAPR = async () => {
       try {
-        if (!walletInfo?.address) return;
-
         let storedTokenAPR = localStorage.getItem("tokenAPRData");
         if (storedTokenAPR) {
           storedTokenAPR = JSON.parse(storedTokenAPR);
@@ -167,7 +136,9 @@ export const WalletProvider = ({ children }) => {
       }
     };
 
-    fetchTokenAPR();
+    if (walletInfo?.address) {
+      fetchTokenAPR();
+    }
   }, [walletInfo?.address]);
 
   useEffect(() => {
@@ -184,7 +155,32 @@ export const WalletProvider = ({ children }) => {
     updateTokenListWithIcons();
   }, []);
 
-  const getBalance = async (address) => {
+  useEffect(() => {
+    const initializeSdk = async () => {
+      if (walletInfo?.privateKey) {
+        try {
+          const sdkInstance = ThirdwebSDK.fromPrivateKey(
+            walletInfo.privateKey,
+            "https://mainnet.mode.network",
+            { clientId: THIRDWEB_CLIENT_ID, secretKey: THIRDWEB_SECRET_KEY }
+          );
+          setSdk(sdkInstance);
+          const activeSigner = sdkInstance.getSigner();
+          if (activeSigner) {
+            setSigner(activeSigner);
+            await getBalance(walletInfo?.address, sdk);
+          } else {
+            console.error("No active signer found.");
+          }
+        } catch (error) {
+          console.error("Failed to initialize SDK:", error);
+        }
+      }
+    };
+    if (walletInfo) initializeSdk();
+  }, [walletInfo]);
+
+  const getBalance = async (address, sdk) => {
     try {
       const balance = await provider.getBalance(address);
       const formattedBalance = ethers.utils.formatUnits(balance, 18);
@@ -197,8 +193,6 @@ export const WalletProvider = ({ children }) => {
   return (
     <WalletContext.Provider
       value={{
-        account,
-        setAccount,
         walletInfo,
         setWalletInfo,
         tokens,
@@ -212,7 +206,6 @@ export const WalletProvider = ({ children }) => {
         sdk,
         setSdk,
         getBalance,
-        setSigner,
         provider,
         client,
         toastMessage,

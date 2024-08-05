@@ -7,20 +7,17 @@ import { WalletContext } from "../../Context/WalletContext";
 import StackBottomSheet from "../BottomSheet/StackBottomSheet";
 import { ethers } from "ethers";
 import Toast from "../Toast/Toast";
-import { useActiveAccount } from "thirdweb/react";
 
 function Earn() {
   const [tokenData, setTokenData] = useState([]);
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isStaking, setIsStaking] = useState(true);
-  const activeAccount = useActiveAccount();
-  const [signer, setSigner] = useState();
+  const [isStaking, setIsStaking] = useState(true); // Default to staking mode
   const {
-    provider,
     walletInfo,
     showStakingModal,
     setShowStakingModal,
+    signer,
     sdk,
     getBalance,
     setToastMessage,
@@ -28,13 +25,6 @@ function Earn() {
     toastMessage,
     toastType,
   } = useContext(WalletContext);
-
-  useEffect(() => {
-    if (activeAccount) {
-      const activeSigner = provider.getSigner(activeAccount?.address);
-      setSigner(activeSigner);
-    }
-  }, [activeAccount, provider]);
 
   useEffect(() => {
     const fetchTokenAPR = async () => {

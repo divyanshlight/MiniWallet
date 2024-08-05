@@ -6,18 +6,17 @@ import { Awaiter } from "../../Components/Awaiter/Awaiter";
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }) {
-
   return (
-    <ThirdwebProvider
-      clientId="d6ef10249a89a4eb7e73297feaaafbcb"
-    >
-      <WalletProvider>
-        <QueryClientProvider client={queryClient}>
+    <WalletProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThirdwebProvider
+          activeChain="https://mainnet.mode.network"
+          clientId="d6ef10249a89a4eb7e73297feaaafbcb"
+        >
           <Awaiter />
-   
           <Component {...pageProps} />
-        </QueryClientProvider>
-      </WalletProvider>
-    </ThirdwebProvider>
+        </ThirdwebProvider>
+      </QueryClientProvider>
+    </WalletProvider>
   );
 }

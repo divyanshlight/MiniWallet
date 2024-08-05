@@ -11,8 +11,9 @@ function PortfolioBottomSheet({ showModal, setShowModal }) {
       >
         <Sheet.Container
           style={{
-            backgroundColor: "#232323",
+            backgroundColor: "#000",
             color: "#fff",
+            border: "1px solid #fff",
           }}
         >
           <Sheet.Header className={styles.sheet_header} />

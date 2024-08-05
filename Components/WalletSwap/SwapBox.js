@@ -17,15 +17,15 @@ const SwapBox = ({
       {label}:
       <span>
         <Image
-          src="/taiko.svg"
-          // layout="responsive"
-          width={5}
-          height={5}
+          src="/Mode round primary.svg"
+          layout="responsive"
+          width={16}
+          height={16}
           alt="mode"
           className={styles.com_logo}
         />
       </span>
-      Taiko
+      Mode Network
     </p>
     <div className={styles.coinInputContainer}>
       <div className={styles.coinSelectionTab} onClick={onTokenClick}>

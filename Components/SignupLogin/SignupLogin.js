@@ -52,7 +52,8 @@ function SignupLogin() {
                   </div>
                   <div className={styles.iconContainer}>
                     <HiSquares2X2 size={30} />
-                    </div>
+                    <HiOutlineSearch size={30} />
+                  </div>
                 </div>
                 <div className={styles.inputContainer}>
                 <h2 className={styles.heading}>Sign In</h2>

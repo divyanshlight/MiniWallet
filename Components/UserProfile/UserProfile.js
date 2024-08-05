@@ -13,7 +13,6 @@ import copy from "copy-to-clipboard";
 import SeedPhraseInfo from "./SeedPhraseInfo.js";
 import { IoChevronBackOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { BiSolidCopy } from "react-icons/bi";
 
 function UserProfile({ handleCloseUserProfile }) {
   const [walletInfo, setWalletInfo] = useState(null);
@@ -99,7 +98,7 @@ function UserProfile({ handleCloseUserProfile }) {
                   className={styles.copyIcon}
                   onClick={() => handleCopy(walletInfo && walletInfo.address)}
                 >
-                  <BiSolidCopy />
+                  <FaCopy />
                 </div>
               </div>
               <div className={styles.seedPhraseContent}>

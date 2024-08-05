@@ -1,10 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import {
-  AutoConnect,
-  ConnectEmbed,
-  useActiveAccount,
-  useBuyWithFiatQuote,
-} from "thirdweb/react";
+import { useBuyWithFiatQuote } from "thirdweb/react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Header from "../Header/Header";
@@ -23,32 +18,21 @@ import { BiSolidMessageRoundedDots } from "react-icons/bi";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import TransactionHistory from "../TransactionHistory/TransactionHistory";
 import PortfolioBottomSheet from "../BottomSheet/PortfolioBottomSheet";
-import QRCode from "../QRCode/QRCode";
-import { createWallet, inAppWallet } from "thirdweb/wallets";
-import { ethers } from "ethers";
-import { EmbeddedWalletSdk } from "@thirdweb-dev/wallets";
-import { CHAINS, THIRDWEB_CLIENT_ID, THIRDWEB_SECRET_KEY } from "../Constants";
-import { useActiveWalletChain } from "thirdweb/react";
 
-const wallets = [
-  inAppWallet(),
-  createWallet("io.metamask"),
-  createWallet("com.coinbase.wallet"),
-  createWallet("me.rainbow"),
-];
 const WalletDashboard = () => {
   const router = useRouter();
   const {
     walletInfo,
     tokens,
+    signer,
     balance,
+    sdk,
     getBalance,
     client,
     toastMessage,
     setToastMessage,
     toastType,
     setToastType,
-    account,
   } = useContext(WalletContext);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [tokenAddress, setTokenAddress] = useState("");
@@ -62,57 +46,28 @@ const WalletDashboard = () => {
   const [showUserProfile, setShowUserProfile] = useState(false);
   const [showTransactionHistory, setShowTransactionHistory] = useState(false);
   const [showPortfolio, setShowPortfolio] = useState(false);
-  const [showQRCode, setShowQRCode] = useState(false);
-  const activeAccount = useActiveAccount();
-  const [signer, setSigner] = useState();
-  const [sdk, setSdk] = useState();
-  const activeChain = useActiveWalletChain();
-  
-
   const { data: quote, error: quoteError } = useBuyWithFiatQuote({
     client,
     fromCurrencySymbol: "USD",
     toChainId: 1,
     toAmount: amount || 10,
     toTokenAddress: tokenAddress || NATIVE_TOKEN_ADDRESS,
-    toAddress: activeAccount?.address,
+    toAddress: walletInfo?.address,
     isTestMode: false,
   });
 
   useEffect(() => {
-    if (activeAccount && activeChain) {
-      const rpcBaseUrl = activeChain?.rpc.split('${')[0];
-      const provider = new ethers.providers.JsonRpcProvider(
-        rpcBaseUrl
-      );
-      const thirdwebEmbeddedWallet = new EmbeddedWalletSdk({
-        clientId: THIRDWEB_CLIENT_ID,
-        chain: CHAINS,
-      });
-      setSdk(thirdwebEmbeddedWallet);
-      const activeSigner = provider.getSigner(activeAccount.address);
-      setSigner(activeSigner);
-    }
-  }, [activeAccount, activeChain]);
-
-  useEffect(() => {
     if (walletInfo?.address && sdk) {
-      getBalance(account.address, sdk);
+      getBalance(walletInfo.address, sdk);
       const interval = setInterval(() => {
         getBalance(walletInfo.address, sdk);
-      }, 5000);
+      }, 1000); // Fetch every 60 seconds
       return () => clearInterval(interval);
     }
   }, [walletInfo, sdk]);
 
   const handleFiatPurchase = async () => {
-    if (
-      sdk &&
-      activeAccount?.address &&
-      tokenAddress &&
-      amount &&
-      amount >= 10
-    ) {
+    if (sdk && walletInfo?.address && tokenAddress && amount && amount >= 10) {
       setLoading(true);
       try {
         if (quote) {
@@ -158,30 +113,18 @@ const WalletDashboard = () => {
   const handleCloseUserProfile = () => {
     setShowUserProfile(false);
   };
-
   const handleCloseHistory = () => {
     setShowTransactionHistory(false);
   };
 
-  const handleShowPortfolio = () => {
-    setShowPortfolio(true);
-    setShowModal(true);
-  };
-  const handleCloseQRCode = () => {
-    setShowQRCode(false);
-  };
   return (
     <div className={styles.dashboard}>
-      <AutoConnect client={client} timeout={15000} wallets={wallets} />
-
       {showUserProfile ? (
         <UserProfile handleCloseUserProfile={handleCloseUserProfile} />
       ) : showTransactionHistory ? (
         <TransactionHistory handleCloseHistory={handleCloseHistory} />
-      ) : showQRCode ? (
-        <QRCode handleCloseQRCode={handleCloseQRCode} />
       ) : (
-        activeAccount && (
+        walletInfo && (
           <div className={styles.container}>
             <div>
               <h2 className={styles.heading}>HOME</h2>
@@ -192,8 +135,7 @@ const WalletDashboard = () => {
                 toggleBalanceVisibility={toggleBalanceVisibility}
                 isBalanceVisible={isBalanceVisible}
                 handleShowUserProfile={handleShowUserProfile}
-                setShowPortfolio={handleShowPortfolio}
-                setShowQRCode={setShowQRCode}
+                setShowPortfolio={setShowPortfolio}
               />
             )}
             <div className={styles.dashboardContainer}>
@@ -267,7 +209,7 @@ const WalletDashboard = () => {
           </div>
         )
       )}
-      {!activeAccount && (
+      {!walletInfo && (
         <div className={styles.noWallet}>
           <p>No wallet connected. Please connect your wallet.</p>
         </div>
@@ -281,13 +223,7 @@ const WalletDashboard = () => {
           tokens={tokens}
         />
       )}
-      {showModal && showPortfolio && (
-        <PortfolioBottomSheet
-          showModal={showModal}
-          setShowModal={setShowModal}
-        />
-      )}
-      {showModal && !showPortfolio && !showOnRamp && (
+      {showModal && !showOnRamp && (
         <BuyTokenBottomSheet
           setTokenAddress={setTokenAddress}
           setAmount={setAmount}
@@ -306,6 +242,12 @@ const WalletDashboard = () => {
           setShowModal={setShowModal}
           onRampLink={onRampLink}
           transactionType={transactionType}
+        />
+      )}
+      {showPortfolio && (
+        <PortfolioBottomSheet
+          showModal={showModal}
+          setShowModal={setShowModal}
         />
       )}
       <Toast

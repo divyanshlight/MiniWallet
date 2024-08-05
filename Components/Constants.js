@@ -4,20 +4,6 @@ export const INFURA_PROJECT_SECRET =
 export const THIRDWEB_CLIENT_ID = "d6ef10249a89a4eb7e73297feaaafbcb";
 export const THIRDWEB_SECRET_KEY =
   "RPovIC7M9BPHDTB_6MS2oHyf-PuX2XNVBhKNOFH9F0r4Lj8WlU8WEOlNRFVokw_5o5yTN-IsCKrAOtycS3GM2A";
-export const CHAINS = [
-    {
-      id: 919,
-      name: "Mode TestNet",
-      testnet: true,
-      rpc: `https://919.rpc.thirdweb.com/${THIRDWEB_SECRET_KEY}`,
-    },
-    {
-      id: 34443,
-      name: "Mode Network",
-      testnet: false,
-      rpc: `https://34443.rpc.thirdweb.com/${THIRDWEB_SECRET_KEY}`,
-    },
-  ];
 export const TOKENS_PAIR_FOR_SWAP = [
   {
     symbol: "KIM",
